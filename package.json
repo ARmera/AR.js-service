@@ -1,0 +1,26 @@
+{
+  "name": "ar.js-service",
+  "version": "1.0.0",
+  "description": "Road navigation serviced with webview in the ARoHa application",
+  "main": "index.js",
+  "scripts": {
+    "cleanup": "rm -rf dist && mkdir dist",
+    "copy": "cp -r src/ dist/ && rm -rf dist/js/components",
+    "rsync": "sshpass -f './.password' rsync -avzh dist/ root@ar.konk.uk:/www/aroha/ldh/rsync",
+    "rsync:watch": "while true; do inotifywait -r -e modify,create,delete ./dist && npm run rsync; done",
+    "build": "npm run cleanup && npm run copy && ./node_modules/.bin/webpack --mode=none",
+    "build:prod": "npm run cleanup && npm run copy && ./node_modules/.bin/webpack --optimize-minimize",
+    "build:watch": "npm run cleanup && npm run copy && ./node_modules/.bin/webpack --mode=none --watch"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  }
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AR TEST</title>
+        <meta charset="UTF-8" />
+        <script src="js/libraries/aframe.min.js"></script>
+        <script src="js/libraries/aframe-ar.min.js"></script>
+        <script src="js/libraries/aframe-lookat-component.min.js"></script>
+        <script src="js/script.js"></script>
+        <style>
+            body { margin: 0; padding: 0; overflow: hidden; }
+        </style>
+    </head>
+    <body>
+        <a-scene
+            embedded
+            vr-mode-ui="enabled: false"
+            arjs='sourceType: webcam; debugUIEnabled: false;'
+        >
+            <a-camera rotation-reader>
+            </a-camera>
+            <a-entity run />
+        </a-scene>
+    </body>
+</html>
