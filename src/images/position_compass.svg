@@ -1,0 +1,20 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="drop-shadow">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+            <feOffset dx="0" dy="0" result="offsetblur"/>
+            <feFlood flood-color="#0065ff"/>
+            <feComposite in2="offsetblur" operator="in"/>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <g>
+        <ellipse opacity="0.1" ry="100" rx="100" id="svg_1" cy="100" cx="100" stroke-width="0" fill="#0065ff"/>
+        <ellipse stroke="#D1D1D1" ry="50" rx="50" id="svg_2" cy="100" cx="100" stroke-width="2" fill="#ffffff" filter="url(#drop-shadow)"/>
+        <ellipse ry="35" rx="35" id="svg_4" cy="100" cx="100" stroke-width="0" fill="#0065ff"/>
+        <path id="svg_7" d="m81.142857,43.500004l18.857143,-33.000001l18.857143,33.000001l-37.714287,0z" fill="#0065ff"/>
+    </g>
+</svg>
