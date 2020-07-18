@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>T MAP Service</title>
+        <meta charset="UTF-8" />
+        <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=3b93e7ea-9bb4-4402-afdb-a96aaab9fa23"></script>
+        <script src="./js/script_map.js"></script>
+        <style>
+            html, body { margin: 0; padding: 0; height: 100%; }
+            #map-container { height: 100%; }
+            #map-tracking { position: absolute; bottom: 20px; left: 20px; }
+            #map-tracking button { margin: 0; padding: 11px; background-color: #FFF; width: 46px; height: 46px; border: 0; line-height: 1; font-size: 0; border-radius: 12%; box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.35); outline: 0; }
+            #map-tracking button img { position: relative; top: 1px; display: none; width: 24px; }
+            #map-tracking button img[role="active"] { display: none !important; }
+            #map-tracking button img[role="inactive"] { display: block !important; }
+            #map-tracking button.active img[role="active"] { display: block !important; }
+            #map-tracking button.active img[role="inactive"] { display: none !important; }
+        </style>
+    </head>
+    <body>
+        <div id="map-container"></div>
+        <div id="map-tracking">
+            <button id="tracking-button" class="active">
+                <img src="./images/tracking.svg" alt="tracking" role="inactive" />
+                <img src="./images/tracking_active.svg" alt="tracking" role="active" />
+            </button>
+        </div>
+    </body>
+</html>
