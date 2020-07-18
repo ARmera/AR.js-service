@@ -6,7 +6,7 @@
   "scripts": {
     "cleanup": "rm -rf dist && mkdir dist",
     "copy": "cp -r src/ dist/ && rm -rf dist/js/components",
-    "rsync": "sshpass -f './.password' rsync -avzh dist/ root@ar.konk.uk:/www/aroha/ldh/rsync",
+    "rsync": "sshpass -f './.password' rsync -avzh dist/ root@ar.konk.uk:/www/aroha/kdh/rsync",
     "rsync:watch": "while true; do inotifywait -r -e modify,create,delete ./dist && npm run rsync; done",
     "build": "npm run cleanup && npm run copy && ./node_modules/.bin/webpack --mode=none",
     "build:prod": "npm run cleanup && npm run copy && ./node_modules/.bin/webpack --optimize-minimize",
