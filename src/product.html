@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Aroha! Product application</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <script src="js/product.js"></script>
+        <style>
+            html, body { margin: 0; padding: 0; display: flex; flex: 1; flex-direction: column; height: 100%; overflow: hidden; }
+            iframe { border: 0; display: flex; }
+            #ar-frame { flex: 3; }
+            #map-frame { flex: 1; border-top: 1px solid gray; }
+        </style>
+    </head>
+    <body>
+        <iframe id="ar-frame" src="index.html"></iframe>
+        <iframe id="map-frame" src="map.html"></iframe>
+    </body>
+</html>

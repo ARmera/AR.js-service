@@ -6,12 +6,13 @@ function initializeTmap(mapEl, { latitude, longitude }) {
 		width : `100%`,
 		height : `100%`,
 		zoom : 17,
+		httpsMode: true,
 		zoomControl : false,
 		scrollwheel : false
 	});
 }
 function generateGeolocationMarker(map, { latitude, longitude }, dir) {
-	const P = 42;
+	const P = 34;
 	const icon = `${dir}/images/position.svg`;
 	const position = new Tmapv2.LatLng(latitude, longitude);
 	const iconSize = new Tmapv2.Size(P, P);

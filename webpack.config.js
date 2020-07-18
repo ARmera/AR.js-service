@@ -9,7 +9,8 @@ const distPath = path.resolve(__dirname, `./dist/`);
 module.exports = async function(mode = `production`) {
 	const entryFiles = {
 		'js/script': `${srcPath}/js/script.js`,
-		'js/script_map': `${srcPath}/js/script_map.js`
+		'js/script_map': `${srcPath}/js/script_map.js`,
+		'js/product': `${srcPath}/js/product.js`
 	};
 
 	return {
