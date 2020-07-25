@@ -1,8 +1,9 @@
 import turnType from "../datasets/turnType";
 
-class PinImage {
+class AugmentedPinImage {
 	constructor(turnType) {
 		this.turnType = 0;
+		this.imageEl = document.createElement(`a-image`);
 
 		this.render = this.render.bind(this);
 		this.setTurnType = this.setTurnType.bind(this);
@@ -13,23 +14,22 @@ class PinImage {
 	setTurnType(turnType) {
 		if([11,12,13,14,16,17,18,19].includes(turnType)) {
 			this.turnType = +turnType;
+			this.imageEl.setAttribute(`src`, `#turn-icon-${this.turnType}`);
 		}
 	}
 	getTurnType() {
 		return this.turnType;
 	}
 	render() {
-		const imageEl = document.createElement(`a-image`);
-		imageEl.setAttribute(`src`, `#turn-icon-${this.turnType}`);
-		imageEl.setAttribute(`width`, `4`);
-		imageEl.setAttribute(`height`, `4`);
-		imageEl.setAttribute(`look-at`, `[camera]`);
+		this.imageEl.setAttribute(`src`, `#turn-icon-${this.turnType}`);
+		this.imageEl.setAttribute(`width`, `4`);
+		this.imageEl.setAttribute(`height`, `4`);
 
-		return imageEl;
+		return this.imageEl;
 	}
 };
 
-PinImage.prepareAssets = function(element) {
+AugmentedPinImage.prepareAssets = function(element) {
 	const sceneEl = element || document.querySelector(`a-scene[embedded]`);
 	const assetsEl = document.createElement(`a-assets`);
 	[0, ...Object.keys(turnType)].forEach(key => {
@@ -46,4 +46,4 @@ PinImage.prepareAssets = function(element) {
 	sceneEl.appendChild(assetsEl);
 };
 
-export default PinImage;
+export default AugmentedPinImage;

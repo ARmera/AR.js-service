@@ -1,4 +1,5 @@
-import PinImage from "./components/PinImage";
+import AugmentedPinImage from "./components/AugmentedPinImage";
+import AugmentedPin from "@/js/components/AugmentedPin";
 
 function getPosition(){
 	return new Promise(resolve => {
@@ -34,29 +35,23 @@ function calcDistance(position1, position2) {
 
 document.addEventListener(`DOMContentLoaded`, function() {
 	const sceneEl = document.querySelector(`a-scene[embedded]`);
-	PinImage.prepareAssets(sceneEl);
+	AugmentedPinImage.prepareAssets(sceneEl);
 
 	// const pin_position = { latitude: 37.541603, longitude: 127.078775 };
 	// const pin_position = { latitude: 37.542488, longitude: 127.078056 };
 	const pin_position = { latitude: 37.542292, longitude: 127.076093 };
-	const entityEl = document.createElement(`a-entity`);
-	entityEl.id = `m1`;
-	entityEl.setAttribute(`gps-entity-place`, `latitude: ${pin_position.latitude}; longitude: ${pin_position.longitude};`);
-	entityEl.setAttribute(`look-at`, `[camera]`);
 
-	const pin = new PinImage(13);
-
-	const textEl = document.createElement(`a-text`);
-	textEl.setAttribute(`value`, `300m`);
-	textEl.setAttribute(`color`, `#FF0000`);
-	textEl.setAttribute(`scale`, `10 10 1`);
+	const ex = new AugmentedPin(`m1`);
+	ex.setCoordinates(pin_position.latitude, pin_position.longitude);
+	ex.pinImage.setTurnType(12);
 
 	window.navigator.geolocation.watchPosition(position => {
 		const d = calcDistance(position.coords, pin_position);
-		textEl.setAttribute(`value`, `${d}m`);
+		ex.setTextValue(`${d}m`);
 	});
+	setTimeout(() => {
+		ex.pinImage.setTurnType(18);
+	}, 3000);
 
-	entityEl.appendChild(pin.render());
-	entityEl.appendChild(textEl);
-	sceneEl.appendChild(entityEl);
+	sceneEl.appendChild(ex.render());
 });

@@ -10,7 +10,8 @@ module.exports = async function(mode = `production`) {
 	const entryFiles = {
 		'js/script': `${srcPath}/js/script.js`,
 		'js/script_map': `${srcPath}/js/script_map.js`,
-		'js/product': `${srcPath}/js/product.js`
+		'js/product': `${srcPath}/js/product.js`,
+		'js/application': `${srcPath}/js/application.js`
 	};
 
 	return {
