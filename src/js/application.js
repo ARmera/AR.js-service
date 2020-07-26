@@ -12,11 +12,9 @@ import { Application } from "@/js/components/Application";
 
 	const e = { latitude: 14145975, longitude: 4515203 };
 
-
-	// console.log(features);
-
 	const app = new Application;
 	app.reset(features);
 
 	console.log(app);
+	console.log(app.getEntireRoutes());
 })();

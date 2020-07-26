@@ -1,5 +1,26 @@
 import { RouteUnit } from "@/js/components/RouteUnit";
 
+/**
+ * @param unit RouteUnit
+ * @param e Object
+ * @param flag boolean
+ */
+const set = (unit, e, flag) => {
+	const {
+		geometry: { coordinates },
+		properties: { description, turnType, facilityType }
+	} = e;
+
+	if(flag) {
+		unit.setStartCoordinates(coordinates);
+	} else {
+		unit.setEndCoordinates(coordinates);
+		unit.turnType = turnType;
+		unit.description = description;
+		unit.facilityType = facilityType;
+	}
+};
+
 export class Application {
 	constructor() {
 		this.routes = [];
@@ -10,27 +31,6 @@ export class Application {
 	}
 
 	reset(features) {
-		/**
-		 * @param unit RouteUnit
-		 * @param e Object
-		 * @param flag boolean
-		 */
-		const set = (unit, e, flag) => {
-			const {
-				geometry: { coordinates },
-				properties: { description, turnType, facilityType }
-			} = e;
-
-			if(flag) {
-				unit.setStartCoordinates(coordinates);
-			} else {
-				unit.setEndCoordinates(coordinates);
-				unit.turnType = turnType;
-				unit.description = description;
-				unit.facilityType = facilityType;
-			}
-		};
-
 		this.routes = [ ];
 		this.currentIndex = 0;
 
@@ -48,6 +48,23 @@ export class Application {
 		}
 	}
 	next() {
+		this.currentIndex += 1;
+	}
 
+	getEntireRoutes() {
+		const routes = [];
+		for(let i = 0; i < this.routes.length; i++) {
+			const { routesCoordinates } = this.routes[i];
+
+			let j = i === 0 ? 0 : 1;
+			for(; j < routesCoordinates.length; j++) {
+				routes.push(routesCoordinates[j]);
+			}
+		}
+
+		return routes;
+	}
+	getCurrentRoute() {
+		return this.routes[this.currentIndex].routesCoordinates.slice();
 	}
 }
