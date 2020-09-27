@@ -54,4 +54,10 @@ document.addEventListener(`DOMContentLoaded`, function() {
 	}, 3000);
 
 	sceneEl.appendChild(ex.render());
+
+	const summery = 100;
+	const w = `${100}%`;
+
+
+
 });
